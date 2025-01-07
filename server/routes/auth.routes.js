@@ -1,0 +1,74 @@
+const Router = require("express")
+const User = require("../models/User")
+const bcrypt = require("bcrypt")
+const config = require("config")
+const jwt = require("jsonwebtoken")
+const { check, validationResult } = require("express-validator")
+const router = new Router()
+
+router.post("/registration", 
+    [
+        check("email","Incorrect Email.").isEmail(),
+        check("password", "Password Invalid: Pass must be between 3 & 12 characters").isLength({min:3,max:12})
+    ],
+    async (req, res) => {
+    try {
+        const errors = validationResult(req)
+        if(!errors.isEmpty()){
+            return req.status(400).json({message: "Invalid Registration Data", errors})
+        }
+
+        const {email, password} = req.body
+
+        const candidate = await User.findOne({email})
+
+        if(candidate) {
+            return res.status(400).json({message: `User with email ${email} already exists`})
+        }
+
+        const hashPassword = await bcrypt.hash(password, 8)
+        const user = new User({email, password: hashPassword})
+        
+        await user.save()
+        return res.json({message: "User was created."})
+
+    } catch (e) {
+        console.error(e)
+        res.send({message: "Server Error", error: e})
+    }
+})
+
+
+router.post("/login", async (req, res) => {
+    try {
+        const{email, password} = req.body
+        const user = await User.findOne({email})
+
+        if(!user){
+            return res.status(400).json({message: "User not found."})
+        }
+
+        const isPassValid = bcrypt.compareSync(password, user.password)
+
+        if(!isPassValid) {
+            return res.status(400).json({message: "Invalid Password"})
+        }
+
+        const token = jwt.sign({id: user.id}, config.get("secretKey"), {expiresIn: "1h"})
+
+        return res.json({
+            user: {
+                id: user.id,
+                email: user.email,
+                diskSpace: user.diskSpace,
+                userSpace: user.usedSpace,
+                avatar: user.avatar
+            }
+        })
+    } catch (e) {
+        console.error(e)
+        res.send({message: "Server Error", error: e})
+    }
+})
+
+module.exports = router
