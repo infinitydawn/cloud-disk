@@ -1,9 +1,9 @@
-
+import Navbar from "./navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
-      Happy New Year!
+      <Navbar />
     </div>
   );
 }
