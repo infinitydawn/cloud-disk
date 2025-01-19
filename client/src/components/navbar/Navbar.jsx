@@ -10,7 +10,7 @@ const Navbar = () =>{
     const dispatch = useDispatch()
     return(
         <div className = "navbar">
-            <img src={Logo} alt="" className="navbar_logo"/>
+            <img src={Logo} alt="" className="navbar__logo"/>
             <div className="navbar__header">FREE CLOUD</div>
             {!isAuth && <div className="navbar__login"><NavLink to="/login">Login</NavLink></div>}
             {!isAuth && <div className="navbar__registration"><NavLink to="/registration">Register</NavLink></div>}
@@ -19,5 +19,5 @@ const Navbar = () =>{
     )
 }
 
-
+//
 export default Navbar;

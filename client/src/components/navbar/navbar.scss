@@ -17,6 +17,15 @@
     margin-left: auto;
     margin-right: 20px;
   }
+
+  &__logo {
+    // display: block;
+    // max-width: 95px;
+    // max-height: 95px;
+    width: auto;
+    
+    height: 100%;
+  }
 }
 
 .container {
