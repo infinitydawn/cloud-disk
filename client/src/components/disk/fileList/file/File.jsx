@@ -1,6 +1,6 @@
 import React from 'react'
 
-const File = () => {
+const File = (key) => {
   return (
     <div>File</div>
   )
