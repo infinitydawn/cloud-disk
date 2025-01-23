@@ -1,6 +1,7 @@
 // action that gets file from server
 
 import axios from 'axios'
+import { setFiles } from '../reducers/fileReducer' 
 
 //parameter - current dir
 export function getFiles(dirId) {
@@ -10,6 +11,7 @@ export function getFiles(dirId) {
                 headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
             })
             console.log(response.data)
+            dispatch(setFiles(response.data))
         } catch (error) {
             alert(error.response.data.message)
         }

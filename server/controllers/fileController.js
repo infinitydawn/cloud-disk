@@ -22,7 +22,7 @@ class FileController {
             return res.json(file)
         } catch (error) {
             console.log(error)
-            return res.status(400).json(e)
+            return res.status(400).json(error)
         }
     }
 
