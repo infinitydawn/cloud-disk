@@ -1,17 +1,41 @@
 // action that gets file from server
 
 import axios from 'axios'
-import { setFiles } from '../reducers/fileReducer' 
+import { setFiles } from '../reducers/fileReducer'
+import { addFile } from '../reducers/fileReducer'
 
 //parameter - current dir
 export function getFiles(dirId) {
-    return async function(dispatch) {
+    return async function (dispatch) {
         try {
-            const response = await axios.get(`http://localhost:5000/api/files${dirId ? "?parent="+dirId : ""}`,{
-                headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+            const response = await axios.get(`http://localhost:5000/api/files${dirId ? "?parent=" + dirId : ""}`, {
+                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             })
             console.log(response.data)
             dispatch(setFiles(response.data))
+        } catch (error) {
+            alert(error.response.data.message)
+        }
+    }
+}
+
+
+
+//parameter - current dir, name - new folder
+export function createDir(dirId, name) {
+    return async function (dispatch) {
+        try {
+            const response = await axios.post(`http://localhost:5000/api/files`
+                , {
+                    name,
+                    parent: dirId,
+                    type: 'dir'
+                }
+                , {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+                })
+            console.log(response.data)
+            dispatch(addFile(response.data))
         } catch (error) {
             alert(error.response.data.message)
         }
