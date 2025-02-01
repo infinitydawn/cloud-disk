@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFiles } from "../../actions/file.js"
 import { createDir } from "../../actions/file.js"
 import FileList from "./fileList/FileList"
@@ -35,11 +35,11 @@ const Disk = function () {
     return (
         <div className="disk">
             <div className="disk__btns">
-                <button className="disk__back" onClick={() => backClickHandler()}>Go Back</button>
+                {currentDir && <button className="disk__back" onClick={() => backClickHandler()}>Go Back</button>}
                 <button className="disk__create" onClick={() => showPopupHandler()}>Create</button>
             </div>
-            <FileList/>
-            <Popup/>
+            <FileList />
+            <Popup />
         </div>
     )
 }
