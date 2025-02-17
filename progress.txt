@@ -5,3 +5,6 @@ lesson 9 - finished, understood, but many details, will not remember.
 finished 10: overall understood everything, but a lot of small details
 
 Finished 11& 12: Overall learning new things, but it is confusing and many small details to remember. One problem is redux
+
+finished 13/22: easy to understand, I think I get everything
+
