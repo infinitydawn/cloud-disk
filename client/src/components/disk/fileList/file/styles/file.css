@@ -7,7 +7,6 @@
 }
 .file:hover {
   transform: scale(1.02);
-  cursor: pointer;
 }
 .file__img {
   justify-self: center;
@@ -19,4 +18,21 @@
 .file__size {
   grid-column-start: 6;
   justify-self: center;
+}
+.file__btn {
+  display: none;
+}
+.file:hover .file__date {
+  grid-column-start: 3;
+}
+.file:hover .file__size {
+  grid-column-start: 4;
+}
+.file:hover .file__download {
+  grid-column-start: 5;
+  display: block;
+}
+.file:hover .file__delete {
+  grid-column-start: 6;
+  display: block;
 }

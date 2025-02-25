@@ -1,8 +1,0 @@
-apt update
-git install ~
-npm install node
-install docker
-git clone link
-cd 
-gir checkout fullapp
-make build inside /bot then make run

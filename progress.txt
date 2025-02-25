@@ -11,3 +11,7 @@ finished 13/26: easy to understand, I think I get everything
 finished 14/26: understand 90%
 
 finished 15/26: understood very well very easy lesson
+
+finished 16/26: nice video, download tricks, server download to client, and trick with fake link on client
+
+finished 17/26: understand 80%, but can forget. Basically, just deleting files from server and frontend updates.
