@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import Navbar from "./navbar/Navbar";
 import './styles/app.css'
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Registration from "./authorization/Registration";
 import Login from "./authorization/Login";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from "../actions/user.js"
 import Disk from "../components/disk/Disk.jsx"

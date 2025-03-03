@@ -15,3 +15,5 @@ finished 15/26: understood very well very easy lesson
 finished 16/26: nice video, download tricks, server download to client, and trick with fake link on client
 
 finished 17/26: understand 80%, but can forget. Basically, just deleting files from server and frontend updates.
+
+finished 18/26 - understand individual parts, but not the entire thing. He made upload progress bar, dynamic.

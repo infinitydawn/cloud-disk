@@ -4,6 +4,7 @@ import { getFiles, uploadFile } from "../../actions/file.js"
 import { createDir } from "../../actions/file.js"
 import FileList from "./fileList/FileList"
 import Popup from "./Popup.jsx"
+import Uploader from "../uploader/Uploader.jsx"
 import './styles/disk.css'
 import { setCurrentDir, setPopupDisplay } from '../../reducers/fileReducer.js';
 
@@ -72,6 +73,7 @@ const Disk = function () {
             </div>
             <FileList />
             <Popup />
+            <Uploader />
         </div>
         : <div className='drop-area' onDrop={dropHandler} onDragEnter={dragEnterHandler} onDragLeave={dragLeaveHandler} onDragOver={dragEnterHandler}>
          Drag Files Here 
