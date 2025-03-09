@@ -17,3 +17,5 @@ finished 16/26: nice video, download tricks, server download to client, and tric
 finished 17/26: understand 80%, but can forget. Basically, just deleting files from server and frontend updates.
 
 finished 18/26 - understand individual parts, but not the entire thing. He made upload progress bar, dynamic.
+
+finsihed 19/26 - overall easy, he just used library for animations, and also a function for file sizes
