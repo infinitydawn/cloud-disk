@@ -13,14 +13,15 @@ const Disk = function () {
     const currentDir = useSelector(state => state.files.currentDir)
     const dirStack = useSelector(state => state.files.dirStack)
     const [dragEnter, setDragEnter] = useState(false)
+    const [sort, setSort] = useState('type')
 
 
     // every time a directory is changes, get files for that folder
     useEffect(function () {
         // only called once at start
         // and when any 1 variable in array changes also gets called
-        dispatch(getFiles(currentDir))
-    }, [currentDir])
+        dispatch(getFiles(currentDir, sort))
+    }, [currentDir, sort])
 
 
     function showPopupHandler() {
@@ -58,7 +59,7 @@ const Disk = function () {
         setDragEnter(false)
     }
 
-
+    if(loader)
 
     return (
         !dragEnter ?
@@ -70,6 +71,11 @@ const Disk = function () {
                     <label htmlFor="disk__upload-input" className="disk__upload-label">Upload File</label>
                     <input multiple={true} onChange={(event)=> fileUploadHandler(event)} type="file" id="disk__upload-input" className="disk__upload-input" />
                 </div>
+                <select value={sort} onChange={(e)=> setSort(e.target.value)} className='disk__select'>
+                    <option value="name">By Name</option>
+                    <option value="type">By Type</option>
+                    <option value="date">By Date</option>
+                </select>
             </div>
             <FileList />
             <Popup />
